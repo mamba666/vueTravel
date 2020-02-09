@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text">
+        <button>确定</button>
+        <ul>
+            <li>{{content}}</li>
+            <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+        </ul>
+        <ul>
+            <li v-for="todo in todos">
+                {{todo.a}}
+            </li>
+        </ul>
+        <div>
+            <p>{{content}}</p>
+            <button @click="reverseMessage"></button>
+        </div>
+        <div>
+            <p>{{model}}</p>
+            <input v-model="model" type="text">
+        </div>
+    </div>
+
+    <script>
+        //全局组件
+        Vue.component("todo-item",{
+            props:[
+                "todo"
+            ],
+            template:"<li>{{todo.text}}</li>"
+        })
+
+        let app=new Vue({
+            el:"#app",
+            data:{
+                model:"edison",
+                content:"hello world",
+                message:new Date().toLocaleString(),
+                todos:[
+                    {a:"a"},
+                    {a:"b"}
+                ],
+                groceryList:[
+                { id: 0, text: '蔬菜' },
+                { id: 1, text: '奶酪' },
+                { id: 2, text: '随便其它什么人吃的东西' }
+                ]
+            },
+            methods:{
+                reverseMessage:function(){
+                    this.content=this.content.split("").reverse().join("")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

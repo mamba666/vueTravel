@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">{{c}}</div>
+        
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                a:"edison",
+                b:"lee",
+                c:"测试watches"
+            },
+            // computed:{
+            //     c:function(){
+            //         console.log("1")
+            //         return this.a+" "+this.b
+            //     }
+            // }
+            watch:{
+                a:function(){
+                    console.log(1)
+                    this.c=this.a+" "+this.b
+                },
+                b:function(){
+                    console.log(2)
+                    this.c=this.a+" "+this.b
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

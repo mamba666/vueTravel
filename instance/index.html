@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the vue instance</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <input v-model="message" type="text">
+    </div>
+
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            // template:"",
+            data:{
+                message:"hello"
+            },
+            beforeCreate:function(){
+                console.log("1")
+            },
+            created:function(){
+                console.log("2")
+            },
+            beforeMount:function(){
+                console.log(this.$el)
+                console.log(this.$root.$options.el)
+                console.log("3")
+            },
+            mounted:function(){
+                console.log(this.$el)
+                console.log(this)
+                console.log("4")
+            },
+            beforeDestroy:function(){
+                console.log(this.$el)
+                console.log(this)
+                console.log("5")
+            },
+            destroyed:function(){
+                console.log(this.$el)
+                console.log(this)
+                console.log("6")
+            },
+            beforeUpdate:function(){
+                console.log(this.$el)
+                console.log(this)
+                console.log("7")
+            },
+            updated:function(){
+                console.log(this.$el)
+                console.log(this)
+                console.log("8")
+            },
+        })
+    </script>
+</body>
+</html>
