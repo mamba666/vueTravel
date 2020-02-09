@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todoList</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue">
+        <button v-on:click="handleBtnClick">确定</button>
+        <ul>
+            <todo-item v-bind:content="item" v-bind:count="count" v-for="(item,count) in list" @delete="handleItemDelete"></todo-item>
+        </ul>
+    </div>
+    <script>
+
+        let TodoItem={
+            props:["content","count"],
+            template:"<li v-on:click='handleItemClick'>{{content}}</li>",
+            methods:{
+                handleItemClick:function(){
+                    this.$emit("delete",this.count)
+                }
+            }
+        }
+
+        let app=new Vue({
+            el:"#app",
+            components:{
+                TodoItem:TodoItem
+            },
+            data:{
+                list:["x"],
+                inputValue:""
+            },
+            methods:{
+                handleBtnClick:function(){
+                    // app.$data可以用this代替
+                    app.$data.list.push(app.$data.inputValue)
+                    this.inputValue=""
+                    // console.log(this._data.inputValue)
+                }, 
+                handleItemDelete:function(count){
+                    this.list.splice(count,2)
+                }
+            }
+        })
+        
+    </script>
+    
+</body>
+</html>
