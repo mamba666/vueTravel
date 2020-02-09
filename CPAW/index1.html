@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{c}}</p>
+        <input v-model="c" type="text">
+    </div>
+
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                a:"edison",
+                b:"lee"
+            },
+            computed:{
+                c:{
+                    get:function(){
+                        return this.a+" "+this.b
+                    },
+                    set:function(val){
+                        let arr=val.split(" ")
+                        this.a=arr[0]
+                        this.b=arr[1]
+                    }
+                }
+                // c:function(){
+                //     return this.a+" "+this.b
+                // }
+            }
+        })
+    </script>
+</body>
+</html>

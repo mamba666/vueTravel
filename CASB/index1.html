@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color:red
+        }
+        .yellow{
+            color:yellow
+        }
+    </style>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div @click="handleDivClick" :class="[activated]">
+            hello world
+        </div>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                activated:"red",
+            },
+            methods:{
+                handleDivClick:function(){
+                    this.activated=this.activated==="red"?"yellow":"red"
+                    // if(this.activated==="red"){
+                    //     this.activated="yellow"
+                    // }else{
+                    //     this.activated="red"
+                    // }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

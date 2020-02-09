@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-if="show">
+            用户名：<input key="userName" type="text">
+        </div>
+        <div v-else>
+            密码：<input key="password" type="text">
+        </div>
+        <!-- <div v-if="show">{{message}}</div>
+        <div v-else-if=true>hello v-else-if</div>
+        <div v-else>hello vue</div> -->
+        <!-- <div v-show="show">{{message}}</div> -->
+    </div>
+
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                show:false,
+                message:"hello world"
+            }
+        })
+    </script>
+</body>
+</html>
