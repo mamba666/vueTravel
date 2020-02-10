@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <script src="../../../velocity.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <transition name="fade"
+                    @before-enter="handleBeforeEnter"
+                    @enter="enter"
+                    @after-enter="Aenter"
+        >
+            <div v-show="show">hello</div>
+        </transition>
+        <button @click="handleClick">toggle</button>  
+    </div>
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                show:true
+            },
+            methods:{
+                handleClick:function(){
+                    this.show=!this.show
+                },
+                handleBeforeEnter:function(el){
+                    el.style.opacity=0
+                },
+                enter:function(el,done){
+                    Velocity(el,{opacity:1},{duration:1000,complete:done})
+                },
+                Aenter:function(el){
+                    console.log("done")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

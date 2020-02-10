@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" href="../../../animate.css">
+    <style>
+        .fade-enter,.fade-leave-to{
+            opacity: 0;
+        }
+        .fade-enter-active,.fade-leave-active{
+            transition: opacity 10s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <transition name="fade"
+                    :duration="10000"
+                    appear
+                    enter-active-class="animated tada" 
+                    leave-active-class="animated flipInX"
+                    appear-active-class="animated hinge"
+        >
+            <div v-if="show">hello world</div>
+        </transition>
+        <button @click="handleClick">toggle</button>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                show:true
+            },
+            methods:{
+                handleClick:function(){
+                    this.show=this.show===true?false:true
+                }
+            }
+        })
+    </script>
+</body>
+</html>
