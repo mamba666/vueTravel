@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tbody>
+                <tr is="row"></tr>
+                <tr is="row"></tr>
+                <tr is="row"></tr>
+            </tbody>
+        </table>
+    </div>
+<tr>
+    <td></td>
+</tr>
+    <script>
+        Vue.component("row",{
+            data:function(){
+                return {
+                    message:"fucking",
+                    ctx:"xxxx"
+                }
+            },
+            template:"<tr><td>{{message}}{{ctx}}</td></tr>"
+            
+        })
+
+        let vm=new Vue({
+            el:"#app",
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>

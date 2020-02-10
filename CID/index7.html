@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child>
+            <template v-slot:todo>
+                <p>我是具名插槽 </p>
+            </template>
+            <template v-slot:default>
+                <p>我是匿名插槽 </p>
+            </template>
+            <!-- 作用域插槽 -->
+            <template v-slot:scope="slotScope">
+                {{slotScope.user.lastName}}
+            </template>
+        </child>
+    </div>
+    <script>
+        Vue.component("child",{
+            // template:"<div><slot></slot><slot name='todo'></slot></div>"
+            template:"<div><slot name='scope' :user='user'></slot></div>",
+            data:function(){
+                return {
+                    user:{
+                        firstName:"edison",
+                        lastName:"lee"
+                    }
+                }
+            }
+        })
+        
+        let vm=new Vue({
+            el:"#app"
+        })
+    </script>
+</body>
+</html>

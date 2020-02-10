@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <count @change="totalIns"></count>
+        <count ref="x" @change="totalIns"></count>
+        <div>{{total}}</div>
+    </div>
+    <script>
+        Vue.component("count",{
+            template:"<div @click='handleClick'>{{num}}</div>",
+            data:function(){
+                return {
+                    num:0
+                }
+            },
+            methods:{
+                handleClick:function(){
+                    this.num++
+                    this.$emit("change")
+                }
+            }
+        })
+
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                total:0
+            },
+            methods:{
+                totalIns:function(){
+                    this.total++
+                    console.log(this.$refs.x)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
