@@ -26,7 +26,7 @@ export default {
         display flex
         line-height .86rem
         background-color $bgColor
-        color #fff 
+        color #fff
         .header-left
             width .64rem
             text-align center
