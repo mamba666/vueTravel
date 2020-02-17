@@ -9,11 +9,13 @@ import 'styles/reset.css'
 import 'styles/border.css'
 import 'styles/iconfont.css'
 import 'swiper/dist/css/swiper.css'
+import axios from 'axios'
 
 
 Vue.config.productionTip = false
 fastclick.attach(document.body)
 Vue.use(VueAwesomeSwiper)
+Vue.prototype.$http=axios
 
 /* eslint-disable no-new */
 new Vue({
