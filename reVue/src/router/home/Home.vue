@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 使用组件 -->
-        <home-header :city="city"></home-header>
+        <home-header></home-header>
         <home-swiper :swiperList="swiperList"></home-swiper>
         <home-icons :iconList="iconList"></home-icons>
         <home-recommend :recommendList="recommendList"></home-recommend>
@@ -18,10 +18,14 @@ import HomeRecommend from "@/components/home/recommend"
 import HomeWeekend from "@/components/home/weekend"
 //引入axios
 import axios from "axios"
+import {mapState} from "vuex"
 
 
 export default {
     name:"Home",
+    computed:{
+        ...mapState(["city"])
+    },
     //声明引入的组件
     components:{
         HomeHeader,
@@ -32,7 +36,7 @@ export default {
     },
     data(){
         return {
-            city:"",
+            lastCity:"",
             swiperList:[],
             iconList:[],
             recommendList:[],
@@ -41,14 +45,13 @@ export default {
     },
     methods:{
         getHomeInfo(){
-            axios.get("/api/index.json").then(this.getHomeInfoSucc)
+            axios.get("/api/index.json?city="+this.city).then(this.getHomeInfoSucc)
         },
         getHomeInfoSucc(res){
             res=res.data
             //如果后端正确返回了结果，且有数据
             if(res.ret&&res.data){
                 const data=res.data
-                this.city=data.city
                 this.swiperList=data.swiperList
                 this.iconList=data.iconList
                 this.recommendList=data.recommendList
@@ -58,7 +61,14 @@ export default {
         }
     },
     mounted(){
+        this.lastCity=this.city
         this.getHomeInfo()
+    },
+    activated(){
+        if(this.lastCity!==this.city){
+            this.lastCity=this.city
+            this.getHomeInfo()
+        }
     }
 }
 </script>

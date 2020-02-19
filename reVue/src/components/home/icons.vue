@@ -21,7 +21,7 @@
     data(){
         return{
             swiperOption:{
-                loop : true
+                loop : false
             }
         }
     },
