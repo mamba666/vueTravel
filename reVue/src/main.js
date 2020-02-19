@@ -12,6 +12,8 @@ import "styles/border.css"
 import "styles/iconfont.css"
 import "swiper/dist/css/swiper.css"
 
+import "styles/iconfont.js"
+
 //引入需要的插件
 import fastClick from "fastclick"
 import VueAwesomeSwiper from "vue-awesome-swiper"

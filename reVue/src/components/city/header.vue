@@ -2,7 +2,9 @@
     <div class="header">
         城市选择
         <router-link to="/">
-            <span class="iconfont back">&#xe624;</span>
+            <svg class="icon back" aria-hidden="true">
+                <use xlink:href="#iconfanhui1"></use>
+            </svg>
         </router-link>
         
     </div>
@@ -25,8 +27,14 @@ export default {
         color #fff
         background $bgColor
         font-size .32rem
+        .icon
+            width 1em
+            height 1em
+            vertical-align -0.15em
+            fill currentColor
+            overflow hidden
         .back
-            top 0
+            top .20rem
             left 0
             position absolute
             width .64rem

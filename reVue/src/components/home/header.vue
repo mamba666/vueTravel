@@ -1,16 +1,22 @@
 <template>
     <div class="container">
         <div class="left">
-            <span class="iconfont">&#xe624;</span>
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#iconfanhui1"></use>
+            </svg>
         </div>
         <div class="input">
-            <span class="iconfont">&#xe632;</span>
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#iconsousuo1"></use>
+            </svg>
             输入城市、景点、游玩主题
         </div>
         <router-link to="/city">
             <div class="right">
                 {{this.city}}
-                <span class="iconfont">&#xe600;</span>
+                <svg class="icon" aria-hidden="true">
+                <use xlink:href="#iconiconzhengli-"></use>
+            </svg>
             </div>
         </router-link>
     </div>
@@ -37,8 +43,12 @@ export default {
         color #fff
         .left
             width .64rem
-            span 
-                font-size .4rem
+            .icon
+                width 1em
+                height 1em
+                vertical-align -0.15em
+                fill currentColor
+                overflow hidden
         .input
             flex 1
             background #fff
@@ -49,12 +59,22 @@ export default {
             // padding-right .1rem
             color #ccc
             line-height .62rem
-            span 
+            .icon
+                width 1em
+                height 1em
+                vertical-align -0.15em
+                fill currentColor
+                overflow hidden
                 font-size .3rem
         .right
             min-width 1.04rem
             padding 0 .1rem
             color #fff
-            span 
-                font-size .24rem
+            .icon
+                width 1em
+                height 1em
+                vertical-align -0.15em
+                fill currentColor
+                overflow hidden
+                // font-size .34rem
 </style>
